@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
-export const hero = defineType({
-  name: 'hero',
-  title: 'Hero',
+export const general = defineType({
+  name: 'general',
+  title: 'General',
   type: 'object',
   fields: [
     defineField({
@@ -11,11 +11,18 @@ export const hero = defineType({
     }),
     defineField({
       name: 'subtitle',
-      title: 'Subtitle',
+      type: 'string',
+    }),
+    defineField({
+      name: 'description',
       type: 'string',
     }),
     defineField({
       name: 'image',
+      type: 'imageAlt',
+    }),
+    defineField({
+      name: 'cardImage',
       type: 'imageAlt',
     }),
   ],

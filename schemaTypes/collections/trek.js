@@ -11,8 +11,8 @@ export const trek = defineType({
       type: 'seo',
     }),
     defineField({
-      name: 'hero',
-      type: 'hero',
+      name: 'general',
+      type: 'general',
     }),
     defineField({
       name: 'details',
@@ -22,12 +22,12 @@ export const trek = defineType({
         defineField({
           name: 'duration',
           title: 'Duration',
-          type: 'number',
+          type: 'string',
         }),
         defineField({
-          name: 'trekkingsDays',
-          title: 'Trekking days',
-          type: 'number',
+          name: 'trekDays',
+          title: 'Trek days',
+          type: 'string',
         }),
         defineField({
           name: 'season',
@@ -43,8 +43,8 @@ export const trek = defineType({
             list: [
               {title: 'Easy', value: 'easy'},
               {title: 'Moderate', value: 'moderate'},
-              {title: 'Hard', value: 'hard'},
               {title: 'Challenging', value: 'challenging'},
+              {title: 'Strenuous', value: 'strenuous'},
             ],
           },
         }),
@@ -56,12 +56,12 @@ export const trek = defineType({
             defineField({
               name: 'meters',
               title: 'Meters',
-              type: 'number',
+              type: 'string',
             }),
             defineField({
               name: 'feet',
               title: 'Feet',
-              type: 'number',
+              type: 'string',
             }),
           ],
         }),
@@ -73,17 +73,39 @@ export const trek = defineType({
             defineField({
               name: 'km',
               title: 'Kilometers',
-              type: 'number',
+              type: 'string',
             }),
             defineField({
               name: 'miles',
               title: 'Miles',
-              type: 'number',
+              type: 'string',
             }),
           ],
         }),
+        defineField({
+          name: 'region',
+          title: 'Region',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Everest region', value: 'everest'},
+              {title: 'Annapurna region', value: 'annapurna'},
+              {title: 'Langtang region', value: 'langtang'},
+              {title: 'Other regions', value: 'others'},
+            ],
+          },
+        }),
+        defineField({
+          name: 'tags',
+          title: 'Tags',
+          type: 'array',
+          of: [{type: 'string'}],
+          options: {
+            layout: 'tags',
+          },
+        }),
       ],
-      options: {collapsible: true, collapsed: true},
+      options: {columns: 2, collapsible: true, collapsed: true},
     }),
     defineField({
       name: 'description',
@@ -161,9 +183,9 @@ export const trek = defineType({
   ],
   preview: {
     select: {
-      title: 'hero.title',
-      subtitle: 'hero.subtitle',
-      image: 'hero.image',
+      title: 'general.title',
+      subtitle: 'general.subtitle',
+      image: 'general.image',
     },
     prepare(selection) {
       const {title, subtitle, image} = selection

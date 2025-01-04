@@ -27,24 +27,50 @@ export const day = defineType({
       options: {columns: 2},
       fields: [
         defineField({
-          name: 'distance',
-          title: 'Distance',
-          type: 'number',
-        }),
-        defineField({
           name: 'altitude',
           title: 'Altitude',
-          type: 'number',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'meters',
+              title: 'Meters',
+              type: 'string',
+            }),
+            defineField({
+              name: 'feet',
+              title: 'Feet',
+              type: 'string',
+            }),
+          ],
+          options: {collapsible: false},
+        }),
+        defineField({
+          name: 'distance',
+          title: 'Distance',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'km',
+              title: 'Kilometers',
+              type: 'string',
+            }),
+            defineField({
+              name: 'miles',
+              title: 'Miles',
+              type: 'string',
+            }),
+          ],
+          options: {collapsible: false},
         }),
         defineField({
           name: 'trekTime',
           title: 'Trek time',
-          type: 'number',
+          type: 'string',
         }),
         defineField({
           name: 'transportTime',
           title: 'Transport time',
-          type: 'number',
+          type: 'string',
           readOnly: ({parent}) => !parent?.bus && !parent?.flight && !parent?.car,
         }),
         defineField({

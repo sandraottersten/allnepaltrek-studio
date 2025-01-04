@@ -6,8 +6,8 @@ export const destinationsPage = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'hero',
-      type: 'hero',
+      name: 'General',
+      type: 'general',
     }),
   ],
 })

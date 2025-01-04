@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
-export const treksPage = defineType({
-  name: 'treksPage',
-  title: 'Treks',
+export const tour = defineType({
+  name: 'tour',
+  title: 'Tour',
   type: 'document',
   fields: [
     defineField({
@@ -12,31 +12,49 @@ export const treksPage = defineType({
     }),
     defineField({
       name: 'general',
-      title: 'General',
+      type: 'general',
+    }),
+    defineField({
+      name: 'details',
+      title: 'Details',
       type: 'object',
       fields: [
         defineField({
-          name: 'title',
+          name: 'duration',
+          title: 'Duration',
           type: 'string',
         }),
         defineField({
-          name: 'subtitle',
-          type: 'string',
+          name: 'price',
+          title: 'Price',
+          type: 'number',
         }),
         defineField({
-          name: 'image',
-          type: 'imageAlt',
+          name: 'region',
+          title: 'Region',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Everest', value: 'everest'},
+              {title: 'Annapurna', value: 'annapurna'},
+              {title: 'Langtang', value: 'langtang'},
+              {title: 'Manaslu', value: 'manaslu'},
+              {title: 'Kanchenjunga', value: 'kanchenjunga'},
+              {title: 'Chitwan', value: 'chitwan'},
+            ],
+          },
         }),
       ],
       options: {collapsible: true, collapsed: true},
     }),
     defineField({
-      name: 'intro',
-      title: 'Intro',
+      name: 'description',
+      title: 'Description',
       type: 'object',
       fields: [
         defineField({
           name: 'title',
+          title: 'Title',
           type: 'string',
         }),
         defineField({
@@ -49,34 +67,12 @@ export const treksPage = defineType({
             },
           ],
         }),
-        defineField({
-          name: 'image',
-          type: 'imageAlt',
-        }),
       ],
       options: {collapsible: true, collapsed: true},
     }),
     defineField({
-      name: 'introCard',
-      title: 'Intro card',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'title',
-          type: 'string',
-        }),
-        defineField({
-          name: 'text',
-          type: 'array',
-          title: 'Text',
-          of: [
-            {
-              type: 'block',
-            },
-          ],
-        }),
-      ],
-      options: {collapsible: true, collapsed: true},
+      name: 'gallery',
+      type: 'gallery',
     }),
   ],
   preview: {

@@ -11,28 +11,16 @@ export const startPage = defineType({
       type: 'seo',
     }),
     defineField({
-      name: 'hero',
-      type: 'hero',
-    }),
-    defineField({
-      name: 'intro',
-      title: 'Intro',
+      name: 'general',
       type: 'object',
       fields: [
         defineField({
           name: 'title',
-          title: 'Title',
           type: 'string',
         }),
         defineField({
-          name: 'text',
-          type: 'array',
-          title: 'Text',
-          of: [
-            {
-              type: 'block',
-            },
-          ],
+          name: 'subtitle',
+          type: 'string',
         }),
         defineField({
           name: 'image',
@@ -42,22 +30,45 @@ export const startPage = defineType({
       options: {collapsible: true, collapsed: true},
     }),
     defineField({
-      name: 'usp',
-      title: 'Usp',
+      name: 'intro',
+      title: 'Intro',
       type: 'object',
       fields: [
         defineField({
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
           name: 'usp1',
-          type: 'usp',
+          type: 'text',
+          rows: 2,
         }),
         defineField({
           name: 'usp2',
-          type: 'usp',
+          type: 'text',
+          rows: 2,
         }),
         defineField({
           name: 'usp3',
-          type: 'usp',
+          type: 'text',
+          rows: 2,
         }),
+        defineField({
+          name: 'image',
+          type: 'imageAlt',
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
+    }),
+    defineField({
+      name: 'treks',
+      title: 'Treks',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'trek'}],
+        },
       ],
       options: {collapsible: true, collapsed: true},
     }),
