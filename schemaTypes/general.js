@@ -25,6 +25,10 @@ export const general = defineType({
       name: 'cardImage',
       type: 'imageAlt',
     }),
+    defineField({
+      name: 'navigation',
+      type: 'string',
+    }),
   ],
   options: {collapsible: true, collapsed: true},
 })

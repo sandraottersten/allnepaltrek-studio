@@ -85,15 +85,8 @@ export const trek = defineType({
         defineField({
           name: 'region',
           title: 'Region',
-          type: 'string',
-          options: {
-            list: [
-              {title: 'Everest region', value: 'everest'},
-              {title: 'Annapurna region', value: 'annapurna'},
-              {title: 'Langtang region', value: 'langtang'},
-              {title: 'Other regions', value: 'others'},
-            ],
-          },
+          type: 'reference',
+          to: [{type: 'region'}],
         }),
         defineField({
           name: 'tags',
@@ -113,6 +106,10 @@ export const trek = defineType({
       type: 'object',
       fields: [
         defineField({
+          name: 'trekName',
+          type: 'string',
+        }),
+        defineField({
           name: 'title',
           title: 'Title',
           type: 'string',
@@ -125,6 +122,50 @@ export const trek = defineType({
             {
               type: 'block',
             },
+          ],
+        }),
+        defineField({
+          name: 'highlights',
+          type: 'array',
+          title: 'Highlights',
+          of: [
+            defineField({
+              name: 'highlight',
+              title: 'Highlight',
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'title',
+                  title: 'Title',
+                  type: 'string',
+                }),
+                defineField({
+                  name: 'description',
+                  title: 'Description',
+                  type: 'text',
+                  rows: 2,
+                }),
+                defineField({
+                  name: 'image',
+                  title: 'Image',
+                  type: 'imageAlt',
+                }),
+              ],
+              preview: {
+                select: {
+                  title: 'title',
+                  image: 'image',
+                },
+                prepare(selection) {
+                  const {title, image} = selection
+                  return {
+                    title: title,
+                    media: image,
+                  }
+                },
+              },
+              options: {collapsible: true, collapsed: true},
+            }),
           ],
         }),
       ],
@@ -168,12 +209,65 @@ export const trek = defineType({
       type: 'object',
       fields: [
         defineField({
+          name: 'map',
+          title: 'Map ID',
+          type: 'string',
+        }),
+        defineField({
           name: 'days',
           title: 'Days',
           type: 'array',
           of: [
             {
               type: 'day',
+            },
+          ],
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
+    }),
+    defineField({
+      name: 'packageContent',
+      title: 'Included/excluded',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'included',
+          title: 'Included',
+          type: 'array',
+          of: [
+            {
+              name: 'item',
+              type: 'string',
+            },
+          ],
+        }),
+        defineField({
+          name: 'excluded',
+          title: 'Excluded',
+          type: 'array',
+          of: [
+            {
+              name: 'item',
+              type: 'string',
+            },
+          ],
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
+    }),
+    defineField({
+      name: 'combinedTours',
+      title: 'Combined tours',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'tours',
+          type: 'array',
+          of: [
+            {
+              type: 'reference',
+              to: [{type: 'tour'}],
             },
           ],
         }),

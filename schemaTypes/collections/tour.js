@@ -25,22 +25,21 @@ export const tour = defineType({
           type: 'string',
         }),
         defineField({
-          name: 'price',
-          title: 'Price',
-          type: 'number',
-        }),
-        defineField({
           name: 'region',
           title: 'Region',
+          type: 'reference',
+          to: [{type: 'region'}],
+        }),
+        defineField({
+          name: 'category',
+          title: 'Category',
           type: 'string',
           options: {
             list: [
-              {title: 'Everest', value: 'everest'},
-              {title: 'Annapurna', value: 'annapurna'},
-              {title: 'Langtang', value: 'langtang'},
-              {title: 'Manaslu', value: 'manaslu'},
-              {title: 'Kanchenjunga', value: 'kanchenjunga'},
-              {title: 'Chitwan', value: 'chitwan'},
+              {title: 'City sightseeing', value: 'city'},
+              {title: 'Adventure', value: 'adventure'},
+              {title: 'Day hike', value: 'hike'},
+              {title: 'Safari', value: 'safari'},
             ],
           },
         }),
@@ -60,7 +59,17 @@ export const tour = defineType({
         defineField({
           name: 'text',
           type: 'array',
-          title: 'Text',
+          title: 'Description',
+          of: [
+            {
+              type: 'block',
+            },
+          ],
+        }),
+        defineField({
+          name: 'program',
+          type: 'array',
+          title: 'Program',
           of: [
             {
               type: 'block',
@@ -71,8 +80,67 @@ export const tour = defineType({
       options: {collapsible: true, collapsed: true},
     }),
     defineField({
+      name: 'pricing',
+      title: 'Pricing',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'cat1',
+          title: '1 pax',
+          type: 'number',
+        }),
+        defineField({
+          name: 'cat2',
+          title: '2-5 pax',
+          type: 'number',
+        }),
+        defineField({
+          name: 'cat3',
+          title: '6-10 pax',
+          type: 'number',
+        }),
+        defineField({
+          name: 'cat4',
+          title: '11-15 pax',
+          type: 'number',
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
+    }),
+
+    defineField({
       name: 'gallery',
       type: 'gallery',
+    }),
+    defineField({
+      name: 'packageContent',
+      title: 'Included/excluded',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'included',
+          title: 'Included',
+          type: 'array',
+          of: [
+            {
+              name: 'item',
+              type: 'string',
+            },
+          ],
+        }),
+        defineField({
+          name: 'excluded',
+          title: 'Excluded',
+          type: 'array',
+          of: [
+            {
+              name: 'item',
+              type: 'string',
+            },
+          ],
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
     }),
   ],
   preview: {

@@ -26,9 +26,47 @@ export const startPage = defineType({
           name: 'image',
           type: 'imageAlt',
         }),
+        defineField({
+          name: 'carousel',
+          title: 'Carousel',
+          type: 'array',
+          of: [
+            defineField({
+              name: 'carouselCard',
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'title',
+                  type: 'string',
+                }),
+                defineField({
+                  name: 'link',
+                  type: 'string',
+                }),
+                defineField({
+                  name: 'image',
+                  type: 'imageAlt',
+                }),
+              ],
+              preview: {
+                select: {
+                  title: 'title',
+                  image: 'image',
+                },
+                prepare({title, image}) {
+                  return {
+                    title: title,
+                    media: image,
+                  }
+                },
+              },
+            }),
+          ],
+        }),
       ],
       options: {collapsible: true, collapsed: true},
     }),
+
     defineField({
       name: 'intro',
       title: 'Intro',
@@ -52,6 +90,32 @@ export const startPage = defineType({
           name: 'usp3',
           type: 'text',
           rows: 2,
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
+    }),
+    defineField({
+      name: 'infoCard',
+      title: 'Info card',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'text',
+          type: 'array',
+          title: 'Text',
+          of: [
+            {
+              type: 'block',
+            },
+          ],
+        }),
+        defineField({
+          name: 'link',
+          type: 'link',
         }),
         defineField({
           name: 'image',

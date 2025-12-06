@@ -1,14 +1,10 @@
 import {defineField, defineType} from 'sanity'
 
-export const region = defineType({
-  name: 'region',
-  title: 'Region',
+export const toursPage = defineType({
+  name: 'toursPage',
+  title: 'Tours',
   type: 'document',
   fields: [
-    defineField({
-      name: 'id',
-      type: 'string',
-    }),
     defineField({
       name: 'seo',
       title: 'SEO',
@@ -16,38 +12,50 @@ export const region = defineType({
     }),
     defineField({
       name: 'general',
-      type: 'general',
-    }),
-    defineField({
-      name: 'topTrek',
-      type: 'string',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
+      title: 'General',
       type: 'object',
       fields: [
         defineField({
           name: 'title',
-          title: 'Title',
           type: 'string',
         }),
         defineField({
-          name: 'text',
-          type: 'array',
-          title: 'Text',
-          of: [
-            {
-              type: 'block',
-            },
-          ],
+          name: 'subtitle',
+          type: 'string',
+        }),
+        defineField({
+          name: 'image',
+          type: 'imageAlt',
         }),
       ],
       options: {collapsible: true, collapsed: true},
     }),
     defineField({
-      name: 'gallery',
-      type: 'gallery',
+      name: 'intro',
+      title: 'Intro',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'usp1',
+          type: 'text',
+          rows: 2,
+        }),
+        defineField({
+          name: 'usp2',
+          type: 'text',
+          rows: 2,
+        }),
+        defineField({
+          name: 'usp3',
+          type: 'text',
+          rows: 2,
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
     }),
   ],
   preview: {

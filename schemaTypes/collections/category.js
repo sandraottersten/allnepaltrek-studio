@@ -27,6 +27,11 @@ export const category = defineType({
       rows: 3,
     }),
     defineField({
+      name: 'icon',
+      title: 'Icon',
+      type: 'string',
+    }),
+    defineField({
       name: 'image',
       type: 'imageAlt',
     }),

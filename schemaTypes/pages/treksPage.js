@@ -40,18 +40,19 @@ export const treksPage = defineType({
           type: 'string',
         }),
         defineField({
-          name: 'text',
-          type: 'array',
-          title: 'Text',
-          of: [
-            {
-              type: 'block',
-            },
-          ],
+          name: 'usp1',
+          type: 'text',
+          rows: 2,
         }),
         defineField({
-          name: 'image',
-          type: 'imageAlt',
+          name: 'usp2',
+          type: 'text',
+          rows: 2,
+        }),
+        defineField({
+          name: 'usp3',
+          type: 'text',
+          rows: 2,
         }),
       ],
       options: {collapsible: true, collapsed: true},
@@ -74,6 +75,36 @@ export const treksPage = defineType({
               type: 'block',
             },
           ],
+        }),
+      ],
+      options: {collapsible: true, collapsed: true},
+    }),
+    defineField({
+      name: 'infoCard',
+      title: 'Info card',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'text',
+          type: 'array',
+          title: 'Text',
+          of: [
+            {
+              type: 'block',
+            },
+          ],
+        }),
+        defineField({
+          name: 'link',
+          type: 'link',
+        }),
+        defineField({
+          name: 'image',
+          type: 'imageAlt',
         }),
       ],
       options: {collapsible: true, collapsed: true},
